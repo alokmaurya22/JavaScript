@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body style="background-color: #212121"></body>
+  <script>
+    //API REQUEST AND HANDELLING IN XMLHTTPREQUEST
+    const rqstURL = "https://api.github.com/users/alokmaurya22";
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", rqstURL);
+    xhr.onreadystatechange = function () {
+      console.log(xhr.readyState);
+      if (xhr.readyState === 4) {
+        const data = this.responseText; //string type
+        JSONdata = JSON.parse(data);
+        console.log(typeof JSONdata); // now it is json type
+        console.log(JSONdata.id);
+      }
+    };
+    xhr.send();
+    //+++++++++++++++++++++++++++
+  </script>
+</html>

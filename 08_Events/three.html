@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body style="background-color: #414141; color: aliceblue">
+    <h1>Chai aur js</h1>
+    <h1 id="msg"></h1>
+    <button id="stop">Stop</button>
+    <button id="start">Start</button>
+  </body>
+  <script>
+    let Intervalid;
+    var frontPageMsg;
+
+    const sayDate = function (str) {
+      frontPageMsg = console.log(str, Date.now());
+    };
+
+    const startInterval = function (str = "Wlcome") {
+      if (!Intervalid) {
+        Intervalid = setInterval(sayDate, 1000, str);
+      }
+    };
+
+    var stopInterval = function intervalClr() {
+      clearInterval(Intervalid);
+      console.log("Cleard");
+      Intervalid = null;
+    };
+
+    //startInterval();  // it is for automatic start
+
+    document.querySelector("#stop").addEventListener("click", stopInterval);
+
+    //document.querySelector("#start").addEventListener("click", startInterval);
+    document
+      .querySelector("#start")
+      .addEventListener("click", () => startInterval());
+
+
+      
+    console.log("front Page" + frontPageMsg);
+    const changeText = function () {
+      document.querySelector("#msg").innerHTML =
+        "MSG found check console" + frontPageMsg;
+    };
+    changeText();
+  </script>
+</html>
